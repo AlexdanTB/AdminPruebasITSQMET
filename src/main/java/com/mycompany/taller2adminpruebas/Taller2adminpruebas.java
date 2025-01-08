@@ -61,7 +61,28 @@ public class Taller2adminpruebas {
 
                                 break;
                             case 2:
-                                JOptionPane.showMessageDialog(null, "Verificar calificaciones");
+                                String cedes = JOptionPane.showInputDialog("Ingresa el número de cédula del estudiante:");
+                                if (cedes.length() != 10){
+                                    JOptionPane.showMessageDialog(null, "Ingresa correctamente el número de cédula");
+                                }else{
+                                    switch (cedaind(cedes, estudiantes)+1){
+                                        case 0:
+                                            JOptionPane.showMessageDialog(null, "El estudiante aun no ha sido ingresado");
+                                            break;
+                                        case 1:
+                                            promedio(notas1);
+                                            break;
+                                        case 2:
+                                            promedio(notas2);
+                                            break;    
+                                        case 3:
+                                            promedio(notas3);
+                                            break;    
+                                        case 4:
+                                            promedio(notas4);
+                                            break;    
+                                    }
+                                }
                                 break;
                             case 3:
                                 break;
@@ -110,19 +131,18 @@ public class Taller2adminpruebas {
                                     if (estud > 0 && estud <= estudiantes.length - conti) {
                                         switch (estud) {
                                             case 1:
-                                                JOptionPane.showMessageDialog(null, "El promedio final del estudiante es: "+promedio(notas1, estud));
+                                                JOptionPane.showMessageDialog(null, "El promedio final del estudiante es: "+promedio(notas1));
                                                 break;
                                             case 2:
-                                                JOptionPane.showMessageDialog(null, "El promedio final del estudiante es: "+promedio(notas2, estud));
+                                                JOptionPane.showMessageDialog(null, "El promedio final del estudiante es: "+promedio(notas2));
                                                 break;
                                             case 3:
-                                                JOptionPane.showMessageDialog(null, "El promedio final del estudiante es: "+promedio(notas3, estud));
+                                                JOptionPane.showMessageDialog(null, "El promedio final del estudiante es: "+promedio(notas3));
                                                 break;
                                             case 4:
-                                                JOptionPane.showMessageDialog(null, "El promedio final del estudiante es: "+promedio(notas4, estud));
+                                                JOptionPane.showMessageDialog(null, "El promedio final del estudiante es: "+promedio(notas4));
                                                 break;
                                         }
-                                        JOptionPane.showMessageDialog(null, "Se ha ingresado correctamente las notas del estudiante: "+estudiantes[estud-1]);
                                     } else if (estud == 0) {
                                         break;
                                     } else {
@@ -188,7 +208,7 @@ public class Taller2adminpruebas {
         }
         return lista;
     }
-    public static double promedio(double [] notas, int id){
+    public static double promedio(double [] notas){
         String texto = "";
         double suma = 0;
         double prom = 0;
@@ -200,39 +220,48 @@ public class Taller2adminpruebas {
         JOptionPane.showMessageDialog(null, "Lista de calificaciones del estudiante: "+texto);
         return prom;
     }
+    public static int cedaind(String ced, String[] lista){
+        int index = -1;
+        for (int i = 0 ; i < lista.length ; i++){
+            if (ced.equals(lista[i])){
+                index = i;
+            }
+        }
+        return index;
+    }
 
     public static String ultdigced(int n) {
         String fecha = "";
         switch (n) {
             case 0:
-                fecha = "Lunes 02 de Diciembre del 2024";
+                fecha = "Lunes 13 de Diciembre del 2024";
                 break;
             case 1:
-                fecha = "Martes 03 de Diciembre del 2024";
+                fecha = "Martes 14 de Diciembre del 2024";
                 break;
             case 2:
-                fecha = "Miércoles 04 de Diciembre del 2024";
+                fecha = "Miércoles 15 de Diciembre del 2024";
                 break;
             case 3:
-                fecha = "Jueves 05 de Diciembre del 2024";
+                fecha = "Jueves 16 de Diciembre del 2024";
                 break;
             case 4:
-                fecha = "Viernes 06 de Diciembre del 2024";
+                fecha = "Viernes 17 de Diciembre del 2024";
                 break;
             case 5:
-                fecha = "Sábado 07 de Diciembre del 2024";
+                fecha = "Sábado 18 de Diciembre del 2024";
                 break;
             case 6:
-                fecha = "Lunes 09 de Diciembre del 2024";
+                fecha = "Lunes 20 de Diciembre del 2024";
                 break;
             case 7:
-                fecha = "Martes 10 de Diciembre del 2024";
+                fecha = "Martes 21 de Diciembre del 2024";
                 break;
             case 8:
-                fecha = "Miércoles 11 de Diciembre del 2024";
+                fecha = "Miércoles 22 de Diciembre del 2024";
                 break;
             case 9:
-                fecha = "Jueves 12 de Diciembre del 2024";
+                fecha = "Jueves 23 de Diciembre del 2024";
                 break;
         }
         return fecha;
